@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
+
 struct node 
 {
 	int no; 
@@ -53,7 +55,7 @@ void ekleme (int n, char *a, char *s, int v, int f)
 		p->next= head;
 		head->prev= p;
 		cnt++;
-		//printf("%d Numarali Ogrenci Listeye Eklendi \n", head->no); 
+		printf("%d Numarali Ogrenci Listeye Eklendi \n", head->no); 
 	}
 }
 
@@ -186,10 +188,34 @@ void bonus()
 	printf("Girilen Bilgiler Basarili Bir Sekilde Okundu Lutfen Gormek Icin 3'e Basiniz.'\n");
 }
 
+void ara()
+{
+	system("cls"); 
+	FILE *dosya = fopen("ogrencibilgi.txt", "r");
+	char isim[30];
+	int no; 
+	char ad[30]; 
+	char soyad[30]; 
+	int final; 
+	int vize; 
+	printf("Arancak Ogrencinin Ismini Giriniz: "); scanf("%s", isim);
+
+	while(!feof(dosya))
+	{
+		fscanf(dosya, "%d%s%s%d%d", &no,ad,soyad,&vize,&final);
+		if( strcmp (isim,ad) ==0 )
+		{
+			printf("Numarasi : %d \n Adi : %s \n Soyadi : %s \n Vize Notu : %d \n Final Notu : %d \n", no,ad,soyad,vize,final ); 
+			break;
+		}
+		
+	}
+		
+}
 
 int main() 
 {
-	
+	system("Color 1");
 	int secim; 
 	int no,  vize, final; 
 	char ad[30], soyad[30]; 
@@ -202,6 +228,7 @@ int main()
 		printf("\n\t\t\t\t 3 LISTELE "); 
 		printf("\n\t\t\t\t 4 DOSYAYA YAZ "); 
 		printf("\n\t\t\t\t 5 DOSYADAN ONCE OKU SONRA YAZ "); 
+		printf("\n\t\t\t\t 6 TEK TEK OGRENCI CAGIR");
 		printf("\n\t\t\t\t 0 CIKIS YAP "); 
 		scanf("%d", &secim); 
 		switch(secim) 
@@ -231,6 +258,9 @@ int main()
 			break; 
 			
 			case 5: bonus();
+			break;
+			
+			case 6: ara();
 			break;
 			
 			case 0: return 0;
