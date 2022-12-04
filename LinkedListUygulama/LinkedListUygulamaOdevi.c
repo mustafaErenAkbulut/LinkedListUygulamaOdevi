@@ -157,7 +157,7 @@ void dosyayaYaz()
 	else 
 	{
 		inf * p= head;    
-		FILE *dosya = fopen("ogrencibilgi.txt", "a+"); 
+		FILE *dosya = fopen("OgrenciBilgileri.txt", "a+"); 
 		while(p->next!=head) 
 		{   
 			fprintf( dosya, "%d %s %s %d %d \n", p->no, p->ad, p->soyad, p->vize, p->final); 
@@ -173,7 +173,7 @@ void dosyayaYaz()
 void bonus()
 {
 	
-	FILE *dosya = fopen("ogrencibilgi.txt", "r+");
+	FILE *dosya = fopen("OgrenciBilgileri.txt", "r+");
 	
 	while(!feof(dosya))
 	{
@@ -191,7 +191,7 @@ void bonus()
 void ara()
 {
 	system("cls"); 
-	FILE *dosya = fopen("ogrencibilgi.txt", "r");
+	FILE *dosya = fopen("OgrenciBilgileri.txt", "r");
 	char isim[30];
 	int no; 
 	char ad[30]; 
